@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script.
+      var intervalID = null;
+
+      function update(){
+        intervalID = setInterval(function(){
+          var req = new XMLHttpRequest();
+          req.open("GET","/pictures");
+          req.onreadystatechange = function(){
+            if(req.readyState == 4){
+              document.getElementById("content").innerHTML = req.responseText;
+              newTitle = "KMLE Wcc Screencasting " + new Date();
+              document.getElementById("title").innerHTML = newTitle;
+            }
+          }
+          req.send();
+        }, 1000);
+      }
+
+      function stop(){
+        clearInterval(intervalID);
+      }
+
+  body
+    block content

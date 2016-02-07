@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  p#title Welcome to #{title}
+  p#controls
+    input(type="button",value="Start Updating",onclick="update()")
+    input(type="button",value="Stop Updating",onclick="stop()")
+      
+  p#content!= results
